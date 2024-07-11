@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Maxwell Kantai">
+  <meta name="description" content="This page contains all the things I'm learning to create all the knowledge.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxwell's Website</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-rAQ0/w8+8acQefCZbo2qxE1WJkwftAdKkHd56a/dmvOBoDlG3vS2MO7tJh4hQe1WfUuqO2q4pAj7bW5TCUnYYQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Other meta tags and styles -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Header and footer styles */
+    header, footer {
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+  
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Make sure it stays behind other content */
+    top: 0;
+    left: 0;
+    background-color: #333; /* Fallback background color */
+  }
+
+
+    /* Navigation bar */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* The sidebar menu */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 60px;
+      transition: 0.5s;
+    }
+
+    .sidebar:hover {
+      transform: translateY(-10px);
+      background-color: #8f43db73;
+
+    }
+
+    /* The sidebar links */
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.6s;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .sidebar a:hover {
+      color: #000000;
+      transform: translateY(-5px);
+    }
+
+    /* Position and style the close button (top right corner) */
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    /* The button used to open the sidebar */
+    .openbtn {
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #111;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      transition: 0.6s ;
+      position: fixed;
+    }
+
+    .openbtn:hover {
+      transform: translateY(-5px);
+      background-color: #8f43db73;
+    }
+
+    /* Style page content */
+    #main {
+      transition: margin-left .5s;
+      padding: 16px;
+    }
+
+    /* Search bar styles */
+    .search-container {
+      padding: 8px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-container input[type=text] {
+      padding: 6px;
+      font-size: 17px;
+      border: none;
+      width: 80%;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+
+    .search-container button {
+      padding: 6px 10px;
+      background: #ddd;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .search-container button:hover {
+      background-color: #9f9aa373;
+    }
+
+    /* Main content styles */
+    .content {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Contact form styles */
+    .contact-form {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 8px;
+      transition: 0.6s ;
+    }
+
+    .contact-form:hover {
+      transform: translateY(-5px);
+      background-color: #8f43db73;
+      color: #ccc;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: #272424;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .contact-form button:hover {
+      background: #333;
+    }
+
+    /* Social media links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      color: white;
+      padding: 10px;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 20px;
+      background-color: #333;
+      border-radius: 50%;
+      transition: 0.8s; 
+    }
+
+    .social-links a:hover {
+      background-color: #8f43db73;
+      transform: translateY(-5px);
+    }
+
+    /* Styles for chatbot container and toggle button */
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: -350px;
+      width: 300px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+    #chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #50565c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    #chatbot-toggle:hover{
+      background-color: #8f43db73;
+      transform: translateY(-5px);
+      transition: transform 0.5s ease, box-shadow 0.3s ease;
+    }
+
+    #chatbot-toggle i {
+      /* Adjust icon position */
+      margin-left: 2px;
+    }
+    .chatbot-header {
+      background-color: #585b5e;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbot-header .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      outline: none;
+    }
+    .chatbot-content {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    .chatbot-content .message {
+      margin-bottom: 10px;
+      clear: both;
+      overflow: hidden;
+    }
+    .chatbot-content .message.user {
+      text-align: right;
+      color: #54575a;
+    }
+    .chatbot-content .message.bot {
+      text-align: left;
+      color: #555;
+    }
+    .chatbot-input {
+      background-color: #f9f9f9;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .chatbot-input input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .chatbot-input button {
+      background-color: #444749;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      justify-content: center;
+    }
+
+    
+
+    .content-item:hover {
+      transform: translateY(-20px);
+      color: #f5eded;
+      background-color: #8f43db73;
+    }
+
+    .content-item {
+      background-color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      justify-content: center;
+      transition: transform 0.6s ease, box-shadow 0.3s ease;
+      
+    }
+
+    .content-item img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      transition: transform 1.0s ease, box-shadow 0.3s ease;
+    }
+
+    .content-item img:hover {
+      transform: translateY(-10px);
+    }
+
+    .content-item h3 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .content-item p {
+      font-size: 1rem;
+    }
+
+    /* Contact form styles */
+    .contact-form {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      background: #f4f4f4;
+      border-radius: 8px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: #111;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .contact-form button:hover {
+      background: #333;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div id="main">
+    <button class="openbtn" onclick="openNav()">&#9776;</button>
+    <div class="search-container">
+      <input type="text" placeholder="Search...">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </div>
+   
+    <div class="content">
+      <!-- New content item -->
+      <div class="content-item">
+        <img src="max.jpg" alt="Movie 1">
+        <h3>Movie Title</h3>
+        <p>Description of the movie</p>
+      </div>
+       <!-- Existing content items -->
+       <div class="content-item">
+        <h3>Article Title</h3>
+        <p>Description of the article</p>
+      </div>
+      <div class="content-item">
+        <h3>Service Title</h3>
+        <p>Description of the service</p>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h2>Contact Me</h2>
+      <form action="https://example.com/contact" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+
+  <!-- Chatbot Toggle Button -->
+  <button id="chatbot-toggle">
+    <i class="fas fa-user"></i> <!-- Icon of a person -->
+  </button>
+
+  <!-- Chatbot Container -->
+  <div id="chatbot-container">
+    <!-- Chatbot Header -->
+    <div class="chatbot-header">
+      <span>Chatbot</span>
+      <button class="close-btn" onclick="closeChatbot()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Chatbot Content -->
+    <div class="chatbot-content">
+      <div class="message bot">
+        <span>Sorry, I am just a demo chatbot. I cannot respond.</span>
+      </div>
+    </div>
+
+    <!-- Chatbot Input Area -->
+    <div class="chatbot-input">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Maxwell Kantai. All rights reserved.</p>
+  </footer>
+
+  <script>
+  particlesJS('particles-js', {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": "circle",
+        "stroke": {
+          "width": 0,
+          "color": "#000000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        },
+        "image": {
+          "src": "img/github.svg",
+          "width": 100,
+          "height": 100
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 40,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 150,
+        "color": "#ffffff",
+        "opacity": 0.4,
+        "width": 1
+      },
+      "move": {
+        "enable": true,
+        "speed": 6,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": true,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 400,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 400,
+          "size": 40,
+          "duration": 2,
+          "opacity": 8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 200,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  });
+
+
+    // Function to open the sidebar
+    function openNav() {
+      document.getElementById("sidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    // Function to close the sidebar
+    function closeNav() {
+      document.getElementById("sidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+
+    // Function to open the chatbot
+    function openChatbot() {
+      document.getElementById("chatbot-container").style.right = "20px";
+    }
+
+    // Function to close the chatbot
+    function closeChatbot() {
+      document.getElementById("chatbot-container").style.right = "-350px";
+    }
+
+    // Function to send user message
+    function sendMessage() {
+      var userInput = document.getElementById("user-input").value;
+      if (userInput.trim() === "") return;
+
+      var chatbotContent = document.querySelector(".chatbot-content");
+      var userMessage = document.createElement("div");
+      userMessage.classList.add("message", "user");
+      userMessage.innerHTML = `<span>${userInput}</span>`;
+      chatbotContent.appendChild(userMessage);
+
+      // Simulate a bot response (replace with actual logic)
+      setTimeout(function () {
+        var botMessage = document.createElement("div");
+        botMessage.classList.add("message", "bot");
+        botMessage.innerHTML = `<span>Sorry, I am just a demo chatbot. I cannot respond.</span>`;
+        chatbotContent.appendChild(botMessage);
+
+        // Scroll to the bottom of chat content after message is added
+        chatbotContent.scrollTop = chatbotContent.scrollHeight;
+      }, 500);
+
+      // Clear input field after sending message
+      document.getElementById("user-input").value = "";
+    }
+
+    // Event listener to open sidebar when open button is clicked
+    document.querySelector(".openbtn").addEventListener("click", function() {
+      openNav();
+    });
+
+    // Event listener to send message when user presses Enter key
+    document.getElementById("user-input").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    // Event listener to open chatbot when toggle button is clicked
+    document.getElementById("chatbot-toggle").addEventListener("click", function() {
+      openChatbot();
+    });
+
+    // Event listener to close chatbot when close button is clicked
+    document.querySelector(".close-btn").addEventListener("click", function() {
+      closeChatbot();
+    });
+  </script>
+
+</body>
+</html>
